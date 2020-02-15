@@ -16,8 +16,6 @@ client.on('message', message => {
     // Stop the program if the message wasn't sent by us or isn't prefaced with configured prefix
     if (message.author.id !== client.user.id || message.content.indexOf(client.config.prefix) !== 0) return;
 
-    // IDEA: Make it so react command is in CLI so you can react on 
-    // channels where you don't have the right to message
     var commandName = args[0];
     if (command === "set") {
         // Detects insufficient number of arguments
@@ -100,34 +98,52 @@ function generateReactionArray(args) {
 }
 
 /**
- * async function to allow waiting for each emoji to react
+ * Async function to allow waiting for each emoji to react
  * so they are done in order.
+ * 
  * @param {object} message - gives ability to send messages and
  * reactions in the chat.
  * @param {object} json - contains the contents of the command's JSON file.
  * They have already been parsed into a JavaScript object.
  */
 async function reactEmojis(message, json) {
-	// Actually add the reactions to the previous message
-    var reactions = json.reactions;
-    for (i = 0; i < reactions.length; i++) {
-        var serverReaction = message.guild.emojis.get(reactions[i]);
-        
-        if (serverReaction || reactions[i].length < 8) {
-            // TODO: Make sure it's added to another message, not ours
+    // https://stackoverflow.com/a/51456169/6456163;
+    // IDEA: Have a setting for this to be either in the server
+    // or in the current channel. *currently server
+    // IDEA: Could specify a channel for this, ex. last message
+    // by user in announcements
+
+    // TODO: If `Cannot read property 'react' of null` shows up again,
+    // find the cause and stop it.
+    var user = message.mentions.users.first();
+
+    // Deletes the command message
+    message.member.lastMessage.delete().catch(console.error);
+
+    // IDEA: Even better, have an option to specify how many messages
+        // ago, like the second to last message the user sent
+    
+    if (!!user) {
+        // Actually add the reactions to the previous message
+        var reactions = json.reactions;
+        for (i = 0; i < reactions.length; i++) {
+            var serverReaction = message.guild.emojis.get(reactions[i]);
             
             // Server-wide emoji or Discord native emoji
-            await previousMessage.react("" + reactions[i]);
-            //await message.channel.send("+" + reactions[i]);
-            //await message.channel.send("+" + serverReaction);
-        } else {
-            console.log("Emoji not available...");
+            if (serverReaction || reactions[i].length < 8) {
+                // https://discordjs.guide/popular-topics/reactions.html#reacting-in-order
+                await user.lastMessage.react(reactions[i]);
+            } else {
+                console.log("Emoji not available...");
+                // TODO: Add support for this next
+                // If not, checks if the emoji is available to you because of Discord Nitro
+                // reaction = client.emojis.get(reactions[i]);
+                // reaction ? message.react(reactions[i]) : console.log("Emoji not available on server or your client..."); 
+            }
         }
-
-        // TODO: Add support for this next
-        // If not, checks if the emoji is available to you because of Discord Nitro
-        // reaction = client.emojis.get(reactions[i]);
-        // reaction ? message.react("" + reactions[i]) : console.log("Emoji not available on server or your client..."); 
+    } else {
+        // Last message sent; user not specified
+        console.log("Specify a user!");
     }
 }
 
