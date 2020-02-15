@@ -50,8 +50,36 @@ client.on('message', message => {
             if (err) {
                 console.error("[ERROR] Problem reading file system:", err);
             } else {
+                // NOTE: Skin colored emojis won't send; need to implement
+                // a conversion to the yellow variant or something to show
+                var reactionListEmbed = new Discord.RichEmbed()
+                    .setColor('#00ff80')
+                    .setTitle('multiple-reactions')
+                    .setURL('https://github.com/ajmeese7/multiple-reactions')
+                    // NOTE: Can change image size if higher quality desired
+                    .setAuthor('Aaron Meese', 'https://cdn.discordapp.com/avatars/344277309869522957/5f2b5d2522979cb93d29f78b84f2c8fa.png?size=128', 'https://github.com/ajmeese7')
+                    .setDescription('Here are all your saved reaction sequences:')
+                    //.setThumbnail('would need a good logo image here');
+
                 // objects is an array of JS objects sorted by name, one per JSON file
-                console.log(objects);
+                objects.forEach(function (reaction) {
+                    var emojis = reaction.reactions;
+                    emojis.forEach(function (emoji, index) {
+                        // If custom emoji, try to get it from the server.
+                        // TODO: Implement user emojis as well
+                        if (emoji.length > 2) {
+                            emojis[index] = message.guild.emojis.get(emoji);
+                        }
+                    });
+
+                    reactionListEmbed.addField(`${prefix}${reaction.id}:`, emojis, true);
+                });
+
+                reactionListEmbed
+                    .setTimestamp()
+                    .setFooter('If you like this, give us a star!', 'https://res.cloudinary.com/couponbooked/image/upload/v1579619265/templates/coupons/Boyfriend/smile_snqv4f.png');
+
+                message.channel.send(reactionListEmbed);
             }
         });
     } else {
