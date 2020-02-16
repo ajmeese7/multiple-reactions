@@ -1,12 +1,12 @@
 {
   "name": "multiple-reactions",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Add multiple reactions to message.",
   "repository": {
     "type": "git",
     "url": "git://github.com/ajmeese7/multiple-reactions"
   },
-  "main": "react.js",
+  "main": "reactions.js",
   "author": "Aaron Meese",
   "license": "MIT",
   "dependencies": {
