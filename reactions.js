@@ -22,6 +22,9 @@ client.on('message', message => {
         if (args.length == 1) {
             console.log(`${prefix}set doesn't work that way! You need to include at least one reaction.`);
             return;
+        } else if (commandName == "set" || commandName == "delete" || commandName == "list") {
+            console.log(`You can't use the name ${commandName}! That's already a command!`);
+            return;
         }
 
         // Format the data to be acceptable for json-fs-store
@@ -142,7 +145,9 @@ async function reactEmojis(message, json) {
     // by user in announcements
 
     // TODO: If `Cannot read property 'react' of null` shows up again,
-    // find the cause and stop it.
+    // find the cause and stop it. It's what happens whenever the user
+    // sends a message BEFORE the script is started, so is there any
+    // way to avoid that?
     var user = message.mentions.users.first();
 
     // Deletes the command message

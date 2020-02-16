@@ -1,6 +1,4 @@
 # multiple-reactions
-Discord.js bot for adding custom reactions on command
-
 This is the cousin of my most popular repository, [spambot](https://github.com/ajmeese7/spambot).
 
 ![Spambot Usage GIF](https://user-images.githubusercontent.com/17814535/74597447-521f0c80-5025-11ea-89d5-a6cb98e4e329.gif)
@@ -54,7 +52,7 @@ Your prefix can be anything you want, but I tend to use the `/` because you're u
 
 To start the bot, open a command prompt from the folder containing the repository and run:
 
- `node react`
+ `node reactions`
 
  To stop it, click on the terminal and press **CTRL+C**, which will kill the process. Clicking the big red x works just as well.
 
