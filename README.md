@@ -3,7 +3,7 @@ Discord.js bot for adding custom reactions on command
 
 This is the cousin of my most popular repository, [spambot](https://github.com/ajmeese7/spambot).
 
-![Spambot Usage GIF](https://user-images.githubusercontent.com/17814535/74597031-a1613f00-501d-11ea-980c-b833d02ea9c7.gif)
+![Spambot Usage GIF](https://user-images.githubusercontent.com/17814535/74597447-521f0c80-5025-11ea-89d5-a6cb98e4e329.gif)
 
 This one also spams, but in a much more reasonable way. I don't know about you, but in all the Discord
 servers I'm in, when someone sends messages that piss people off they show their annoyance with 
