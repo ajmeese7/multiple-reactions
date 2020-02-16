@@ -8,8 +8,8 @@ servers I'm in, when someone sends messages that piss people off they show their
 reactions. This program not only encourages that healthy way of expressing yourself, it also enables
 you to save a lot of time when doing it.
 
-Before you ask, **yes**, it works with custom animated server emojis. It doesn't support your own custom emojis for
-Nitro users yet, but that should be coming soon.
+Before you ask, **yes**, it works with custom animated server emojis. Not only that, it *also* allows you to use emojis from
+other servers if you're a Nitro subscriber. So stop wasting time and start reacting!
 
 **Please** don't be that guy who starts trying to set everything in a channel that everyone uses. Try to create the reaction
 sequences somewhere where it won't bother people, then once they're made you can use the custom commands to spam reactions

@@ -68,10 +68,11 @@ client.on('message', message => {
                 objects.forEach(function (reaction) {
                     var emojis = reaction.reactions;
                     emojis.forEach(function (emoji, index) {
-                        // If custom emoji, try to get it from the server.
-                        // TODO: Implement user emojis as well
+                        // If custom emoji, try to get it from the server or user.
                         if (emoji.length > 2) {
-                            emojis[index] = message.guild.emojis.get(emoji);
+                            var serverEmoji = message.guild.emojis.get(emoji);
+                            var userEmoji = client.emojis.get(reactions[i]);
+                            emojis[index] = !!serverEmoji ? serverEmoji : userEmoji;
                         }
                     });
 
@@ -167,11 +168,9 @@ async function reactEmojis(message, json) {
                 // https://discordjs.guide/popular-topics/reactions.html#reacting-in-order
                 await user.lastMessage.react(reactions[i]);
             } else {
-                console.log("Emoji not available...");
-                // TODO: Add support for this next
                 // If not, checks if the emoji is available to you because of Discord Nitro
-                // reaction = client.emojis.get(reactions[i]);
-                // reaction ? message.react(reactions[i]) : console.log("Emoji not available on server or your client..."); 
+                var userReaction = client.emojis.get(reactions[i]);
+                userReaction ? await user.lastMessage.react(reactions[i]) : console.log("Emoji not available on server or your client..."); 
             }
         }
     } else {
