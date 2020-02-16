@@ -64,8 +64,8 @@ The current supported commands are the following:
 
 | Command | Arguments | Action |
 |---------|---------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| set | name - the name of the reaction chain you want to create. <br> emojis - as many emojis as you want to chain. At least one is required. | Creates and stores a JSON file with the emojis you want to react with and the name you choose. If the name already exists, it will overwrite the previous save. |
-| delete | name - the name of the reaction chain you want to delete. | Sends the specified command file to the recycling bin of your computer. |
+| set | `name` - the name of the reaction chain you want to create. <br> `emojis` - as many emojis as you want to chain. At least one is required. | Creates and stores a JSON file with the emojis you want to react with and the name you choose. If the name already exists, it will overwrite the previous save. |
+| delete | `name` - the name of the reaction chain you want to delete. | Sends the specified command file to the recycling bin of your computer. |
 | list | n/a | Sends an embedded message to the chat with all your current emoji reaction sequences listed in a pretty display. |
 
 ## TODO
