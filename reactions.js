@@ -182,7 +182,7 @@ async function reactEmojis(message, json) {
          * Deals with reacting to message after it has been deleted.
          * @param {string} userReaction - the reaction to send
          */
-        function handleError(reaction) {
+        /*function handleError(reaction) {
             message.channel.fetchMessages({
                 // Somehow ignores deleted messages
                 limit: 1,
@@ -223,7 +223,7 @@ async function reactEmojis(message, json) {
                         // The ENTIRE program hangs, not just that one part.
                 });
             });
-        }
+        }*/
     } else {
         // Last message sent; user not specified
         console.log("Specify a user!");
