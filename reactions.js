@@ -194,6 +194,7 @@ async function reactEmojis(message, json) {
                     // https://stackoverflow.com/a/45395863/6456163
                     
                     // IDEA: Counter variable
+                    // https://stackoverflow.com/a/32461436/6456163
                     enableReactionRecursion();
                     async function enableReactionRecursion() {
                         setReactionTimeout(5000, async function(resolve, reject) {
