@@ -71,7 +71,7 @@ client.on('message', message => {
                         // If custom emoji, try to get it from the server or user.
                         if (emoji.length > 2) {
                             var serverEmoji = message.guild.emojis.get(emoji);
-                            var userEmoji = client.emojis.get(reactions[i]);
+                            var userEmoji = client.emojis.get(emoji);
                             emojis[index] = !!serverEmoji ? serverEmoji : userEmoji;
                         }
                     });
@@ -160,18 +160,69 @@ async function reactEmojis(message, json) {
     if (!!user) {
         // Actually add the reactions to the previous message
         var reactions = json.reactions;
+        var breakLoop = false;
         for (i = 0; i < reactions.length; i++) {
-            var serverReaction = message.guild.emojis.get(reactions[i]);
+            if (breakLoop) break;
+            var userReaction = client.emojis.get(reactions[i]);
             
-            // Server-wide emoji or Discord native emoji
-            if (serverReaction || reactions[i].length < 8) {
+            // Discord native emoji or server/Nitro
+            if (reactions[i].length < 8 || userReaction) {
                 // https://discordjs.guide/popular-topics/reactions.html#reacting-in-order
-                await user.lastMessage.react(reactions[i]);
+                await user.lastMessage.react(reactions[i]).catch(async function(err) {
+                    //await handleError(reactions[i]);
+                    console.log("The last message that user sent was deleted! Cannot react...");
+                    breakLoop = true;
+                });
             } else {
-                // If not, checks if the emoji is available to you because of Discord Nitro
-                var userReaction = client.emojis.get(reactions[i]);
-                userReaction ? await user.lastMessage.react(reactions[i]) : console.log("Emoji not available on server or your client..."); 
+                console.log("Emoji not available on server or your client..."); 
             }
+        }
+
+        /**
+         * Deals with reacting to message after it has been deleted.
+         * @param {string} userReaction - the reaction to send
+         */
+        function handleError(reaction) {
+            message.channel.fetchMessages({
+                // Somehow ignores deleted messages
+                limit: 1,
+            }).then((messages) => {
+                // https://github.com/AnIdiotsGuide/discordjs-bot-guide/blob/master/examples/miscellaneous-examples.md#purging-a-channel
+                const filterBy = user ? user.id : Client.user.id;
+                messages = messages.filter(m => m.author.id === filterBy).array();
+                messages.forEach(async function (userMessage) {
+                    // https://stackoverflow.com/a/45395863/6456163
+                    
+                    // IDEA: Counter variable
+                    enableReactionRecursion();
+                    async function enableReactionRecursion() {
+                        setReactionTimeout(5000, async function(resolve, reject) {
+                            await userMessage.react(reaction).catch((err) => console.log("There's a [PROBLEM]!"));
+                        }).catch(async function (err) {
+                            console.log(err);
+                            await enableReactionRecursion();
+                        });
+                    }
+
+                    function setReactionTimeout(ms, callback) {
+                        return new Promise(function(resolve, reject) {
+                            // Set up the real work
+                            callback(resolve, reject);
+                    
+                            // Set up the timeout
+                            setTimeout(function() {
+                                reject('Promise timed out after ' + ms + ' ms');
+                            }, ms);
+                        });
+                    }
+
+                    // NOTE: Sometimes this statement hangs, with or without the `await`.
+                    // How to prevent that from happening? Timeout combined w/ counter for
+                    // max of 3 tries then it fails with error? But that doesn't explain
+                    // the underlying cause!
+                        // The ENTIRE program hangs, not just that one part.
+                });
+            });
         }
     } else {
         // Last message sent; user not specified
