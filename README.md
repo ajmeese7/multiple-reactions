@@ -15,6 +15,11 @@ other servers if you're a Nitro subscriber. So stop wasting time and start react
 sequences somewhere where it won't bother people, then once they're made you can use the custom commands to spam reactions
 without fear because the messages delete themselves. You give the command and *poof*, it's like it never happened.
 
+A few additional points users have raised:
+- No, you cannot use this on your phone. I'll eventually look into making that possible, but it is currently outside of the scope of this project.
+- You can still only react with each emoji once. The normal rules of reactions apply.
+- I'm pretty sure it only works on servers, not DMs or group chats. I'm willing to work on that in the future if there is enough interest, but there currently is not.
+
 **Note:** Using a selfbot may violate the [Discord terms of service](https://discordapp.com/terms). If you use this, your 
 account could be shut down. I claim no responsibility if this happens to you. You have been warned.
 
