@@ -31,6 +31,7 @@ In a command prompt in your projects folder (wherever that may be), run the foll
 
 Once finished:
 
+- Ensure you have NodeJS installed on your PC by running `npm`. If not, Google how to install it and do that now
 - In the folder from where you ran the git command, run `cd multiple-reactions` and then run `npm install`
 - Edit `config.json` and enter your token and desired prefix. It should look like this afterwards:
 
@@ -73,7 +74,4 @@ The current supported commands are the following:
 
 ## TODO
 
-- I am still working on getting it to support custom user emojis for Discord Nitro users.
 - I'm thinking about adding in channel specific support for the custom commands, ex `/happy @ajmeese7 #general`.
-- I want to add a setting that lets you choose whether it's the last message the user sent in the 
-server that's reacted to or just in the channel where you are currently messaging.
