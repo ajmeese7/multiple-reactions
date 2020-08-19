@@ -26,17 +26,19 @@ you to save a lot of time when doing it.
 Before you ask, **yes**, it works with custom animated server emojis. Not only that, it *also* allows you to use emojis from
 other servers if you're a Nitro subscriber. So stop wasting time and start reacting!
 
-**Please** don't be that guy who starts trying to set everything in a channel that everyone uses. Try to create the reaction
-sequences somewhere where it won't bother people, then once they're made you can use the custom commands to spam reactions
-without fear because the messages delete themselves. You give the command and *poof*, it's like it never happened.
+**Please** don't be that guy who starts trying to set everything in a channel that everyone 
+uses. Try to create the reaction sequences somewhere where it won't bother people, then once 
+they're made you can use the custom commands to spam reactions without fear because the 
+messages delete themselves. You give the command and *poof*, it's like it never happened.
 
 A few additional points users have raised:
 - No, you cannot use this on your phone. I'll eventually look into making that possible, but it is currently outside of the scope of this project.
 - You can still only react with each emoji once. The normal rules of reactions apply.
-- I'm pretty sure it only works on servers, not DMs or group chats. I'm willing to work on that in the future if there is enough interest, but there currently is not.
+- I'm pretty sure it only works on servers, not DMs or group chats. I'm willing to work on that in the future if there is enough interest.
 
-**Note:** Using a selfbot may violate the [Discord terms of service](https://discordapp.com/terms). If you use this, your 
-account could be shut down. I claim no responsibility if this happens to you. You have been warned.
+**Note:** Using a selfbot may violate the [Discord terms of service](https://discordapp.com/terms). 
+If you use this, your  account could be shut down. I claim no responsibility if this happens to you. 
+You have been warned.
 
 ## Downloading
 
@@ -77,7 +79,7 @@ To start the bot, open a command prompt from the folder containing the repositor
 
  `node reactions`
 
- To stop it, click on the terminal and press **CTRL+C**, which will kill the process. Clicking the big red x works just as well.
+To stop it, click on the terminal and press **CTRL+C**, which will kill the process. Clicking the big red x works just as well.
 
 ## Commands
 
@@ -91,4 +93,10 @@ The current supported commands are the following:
 
 ## TODO
 
-- I'm thinking about adding in channel specific support for the custom commands, ex `/happy @ajmeese7 #general`.
+- I'm thinking about adding in channel specific support for the custom commands, ex `/happy @ajmeese7 #general`
+- Option to specify how many messages ago, like the second to last message the user sent
+- Option to specify a channel for this, ex. last message by user in announcements
+- Option for this to be either in the server or in the current channel. *(currently server)
+- Properly implement the handling of reacting when the last sent message by that
+user was deleted
+- Fix the `Cannot read property 'react' of null` error
