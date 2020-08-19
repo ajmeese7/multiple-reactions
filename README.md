@@ -1,7 +1,22 @@
 # multiple-reactions
-This is the cousin of my most popular repository, [spambot](https://github.com/ajmeese7/spambot).
 
-![Multiple reactions usage GIF](https://user-images.githubusercontent.com/17814535/74597447-521f0c80-5025-11ea-89d5-a6cb98e4e329.gif)
+<p align="center">
+  <img alt="Multiple reactions usage GIF" src="https://user-images.githubusercontent.com/17814535/74597447-521f0c80-5025-11ea-89d5-a6cb98e4e329.gif">
+
+  <h3 align="center">🤯Multiple Reactions🤯</h3>
+</p>
+
+----
+
+<p align="center">
+   <img src="https://img.shields.io/badge/language-javascript-blue?color=FF69B4"/>
+   <img src="https://img.shields.io/github/license/ajmeese7/multiple-reactions"/>
+   <img src="https://img.shields.io/github/stars/ajmeese7/multiple-reactions"/>
+   <img src="https://img.shields.io/github/forks/ajmeese7/multiple-reactions"/>
+   <img src="https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flat&color=BC4E99" alt="Star Badge"/>
+</p>
+
+This is the cousin of my most popular repository, [spambot](https://github.com/ajmeese7/spambot).
 
 This one also spams, but in a much more reasonable way. I don't know about you, but in all the Discord
 servers I'm in, when someone sends messages that piss people off they show their annoyance with 
@@ -28,6 +43,11 @@ account could be shut down. I claim no responsibility if this happens to you. Yo
 In a command prompt in your projects folder (wherever that may be), run the following:
 
 `git clone https://github.com/ajmeese7/multiple-reactions`
+
+Also note that this will not work if you are running discord.js 11.6.3 or higher.
+To install the newest version of discord.js that this will work on, run the following in command prompt:
+
+`npm install discord.js@11.6.2`
 
 Once finished:
 
