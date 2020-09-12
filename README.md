@@ -1,12 +1,6 @@
-# multiple-reactions
-
 <p align="center">
-  <img alt="Multiple reactions usage GIF" src="https://user-images.githubusercontent.com/17814535/74597447-521f0c80-5025-11ea-89d5-a6cb98e4e329.gif">
-
-  <h3 align="center">🤯Multiple Reactions🤯</h3>
+  <h1 align="center">🤯Multiple Reactions🤯</h1>
 </p>
-
-----
 
 <p align="center">
   <a href="https://github.com/ajmeese7/multiple-reactions/search?l=javascript">
@@ -26,11 +20,15 @@
   </a>
 </p>
 
+<p align="center">
+  <img alt="Multiple reactions usage GIF" src="https://user-images.githubusercontent.com/17814535/74597447-521f0c80-5025-11ea-89d5-a6cb98e4e329.gif">
+</p>
+
 This is the cousin of my most popular repository, [spambot](https://github.com/ajmeese7/spambot).
 
 This one also spams, but in a much more reasonable way. I don't know about you, but in all the Discord
 servers I'm in, when someone sends messages that piss people off they show their annoyance with 
-reactions. This program not only encourages that healthy way of expressing yourself, it also enables
+reactions. This project not only encourages that healthy way of expressing yourself, it also enables
 you to save a lot of time when doing it.
 
 Before you ask, **yes**, it works with custom animated server emojis. Not only that, it *also* allows you to use emojis from
