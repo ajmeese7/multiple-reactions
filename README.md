@@ -54,11 +54,6 @@ In a command prompt in your projects folder (wherever that may be), run the foll
 
 `git clone https://github.com/ajmeese7/multiple-reactions`
 
-Also note that this will not work if you are running discord.js 11.6.3 or higher.
-To install the newest version of discord.js that this will work on, run the following in command prompt:
-
-`npm install discord.js@11.6.2`
-
 Once finished:
 
 - Ensure you have NodeJS installed on your PC by running `npm`. If not, Google how to install it and do that now
@@ -71,8 +66,6 @@ Once finished:
   "prefix": "YOUR_DESIRED_PREFIX_HERE"
 }
 ```
-
-Your prefix can be anything you want, but I tend to use the `/` because you're unlikely to ever use it on accident.
 
 ## Getting your login token
 
